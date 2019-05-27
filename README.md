@@ -1,0 +1,2 @@
+# pytorch-cifar10
+利用tensorflow和pytorch实现各种经典的网络分类框架。所依托的数据集为cifar10
