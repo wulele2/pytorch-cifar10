@@ -19,7 +19,7 @@ def main():
         transforms.Resize((32,32)),
         transforms.ToTensor(),
         ]),download=True)
-    cifar_test=DataLoader(cifar_train,batch_size=batchsz,shuffle=False)
+    cifar_test=DataLoader(cifar_test,batch_size=batchsz,shuffle=False)
 
     x,label=iter(cifar_train).next()
     print('x:',x.shape,'label:',label.shape)
@@ -49,7 +49,7 @@ def main():
             for x,label in cifar_test:
                 logits=model(x)
                 #[b,10]
-                pred=torch.argmax(dim=1)
+                pred=logits.argmax(dim=1)
                 correct=torch.eq(pred,label).float().sum().item()
                 total_correct+=correct
                 total_num+=x.size(0)
